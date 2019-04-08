@@ -4,11 +4,8 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 
-from flask_sslify import SSLify
-
 
 app = Flask(__name__)
-sslify = SSLify(app)
 
 
 STDY_TOKEN = getenv('STDY_TOKEN')
@@ -16,7 +13,7 @@ URL = 'https://api.telegram.org/bot{}/'.format(STDY_TOKEN)
 
 
 @app.route('/{}'.format(STDY_TOKEN), methods=['GET', 'POST'])
-def index():
+def webhook():
     if request.method == 'POST':
         r = request.get_json()
         utility.write_json(r)
