@@ -13,6 +13,11 @@ STDY_TOKEN = getenv('STDY_TOKEN')
 URL = 'https://api.telegram.org/bot{}/'.format(STDY_TOKEN)
 
 
+@app.route('/')
+def start_page():
+    return '<h1> STDY Bot is online</h1>'
+
+
 @app.route('/{}'.format(STDY_TOKEN), methods=['POST', 'GET'])
 def webhook():
     if request.method == 'POST':
