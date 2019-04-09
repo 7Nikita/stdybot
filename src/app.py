@@ -5,6 +5,7 @@ from os import getenv
 from flask import Flask
 from flask import request
 from flask import jsonify
+from flask import render_template
 from command_system import command_list
 
 
@@ -18,7 +19,7 @@ URL = 'https://api.telegram.org/bot{}/'.format(STDY_TOKEN)
 
 @app.route('/')
 def start_page():
-    return '<h1> STDY Bot is online</h1>'
+    return render_template('landing.html')
 
 
 @app.route('/{}'.format(STDY_TOKEN), methods=['POST', 'GET'])
