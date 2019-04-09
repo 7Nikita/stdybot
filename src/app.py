@@ -9,6 +9,7 @@ from command_system import command_list
 
 
 app = Flask(__name__)
+utility.load_modules()
 
 
 STDY_TOKEN = getenv('STDY_TOKEN')
@@ -41,5 +42,4 @@ def send_message(chat_id, text):
 
 
 if __name__ == '__main__':
-    app.before_first_request(utility.load_modules)
     app.run()
