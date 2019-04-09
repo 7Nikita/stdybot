@@ -41,5 +41,5 @@ def send_message(chat_id, text):
 
 
 if __name__ == '__main__':
-    utility.load_modules()
+    app.before_first_request(utility.load_modules)
     app.run()
