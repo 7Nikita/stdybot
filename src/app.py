@@ -27,7 +27,7 @@ def webhook():
         for command in command_list:
             for regular in command.keys:
                 if re.match(regular, r['message']['text']) is not None:
-                    send_message(r['message']['chat']['id'])
+                    send_message(r['message']['chat']['id'], command.process(r))
         utility.write_json(r)
         return jsonify(r)
     return '<h1>Bot start page</h1>'
