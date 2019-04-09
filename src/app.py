@@ -1,9 +1,11 @@
+import re
 import utility
 import requests
 from os import getenv
 from flask import Flask
 from flask import request
 from flask import jsonify
+from command_system import command_list
 
 
 app = Flask(__name__)
@@ -22,6 +24,10 @@ def start_page():
 def webhook():
     if request.method == 'POST':
         r = request.get_json()
+        for command in command_list:
+            for regular in command.keys:
+                if re.match(regular, r['message']['text']) is not None:
+                    send_message(r['message']['chat']['id'])
         utility.write_json(r)
         return jsonify(r)
     return '<h1>Bot start page</h1>'
@@ -35,4 +41,5 @@ def send_message(chat_id, text):
 
 
 if __name__ == '__main__':
+    utility.load_modules()
     app.run()
