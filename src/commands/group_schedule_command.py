@@ -19,7 +19,7 @@ def get_group_schedule(request):
     group, day = re.findall(r'\d+', request['message']['text'])
 
     groups = requests.get('https://journal.bsuir.by/api/v1/groups').json()
-    flag = any([request == i['name'] for i in groups])
+    flag = any([group == i['name'] for i in groups])
 
     if not flag:
         return 'Invalid group number'
