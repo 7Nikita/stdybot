@@ -39,7 +39,7 @@ def get_group_schedule(request):
                     ans += '{} ({}) {} {} {}\n'.format(
                         subject['subject'],
                         subject['lessonType'],
-                        *subject['auditory'],
+                        subject['auditory'],
                         subject['numSubgroup'],
                         subject['lessonTime']
                     )
