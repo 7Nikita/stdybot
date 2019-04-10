@@ -27,7 +27,7 @@ def get_group_schedule(request):
     cur_day = days[day]
     cur_week = requests.get('http://journal.bsuir.by/api/v1/week').json()
 
-    url = 'https://journal.bsuir.by/api/v1/studentGroup/schedule?studentGroup={}'.format(request)
+    url = 'https://journal.bsuir.by/api/v1/studentGroup/schedule?studentGroup={}'.format(group)
     r = requests.get(url).json()
 
     ans = ''
@@ -39,7 +39,7 @@ def get_group_schedule(request):
                     ans += '{} ({}) {} {} {}\n'.format(
                         subject['subject'],
                         subject['lessonType'],
-                        subject['auditory'],
+                        *subject['auditory'],
                         subject['numSubgroup'],
                         subject['lessonTime']
                     )
