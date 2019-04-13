@@ -13,8 +13,8 @@ from command_system import command_list
 app = Flask(__name__)
 utility.load_modules()
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["stdybot"]
+client = pymongo.MongoClient('mongodb://localhost:27017/')
+db = client['stdybot']
 
 
 STDY_TOKEN = getenv('STDY_TOKEN')
@@ -38,7 +38,7 @@ def webhook():
         send_message(r['message']['chat']['id'], 'unknown command')
         utility.write_json(r)
         return jsonify(r)
-    return '<h1>Bot start page</h1>'
+    return render_template('landing.html')
 
 
 def send_message(chat_id, text):
