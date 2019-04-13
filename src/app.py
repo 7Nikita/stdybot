@@ -1,4 +1,5 @@
 import re
+import pymongo
 import utility
 import requests
 from os import getenv
@@ -11,6 +12,9 @@ from command_system import command_list
 
 app = Flask(__name__)
 utility.load_modules()
+
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+db = client["stdybot"]
 
 
 STDY_TOKEN = getenv('STDY_TOKEN')

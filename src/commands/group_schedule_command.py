@@ -1,5 +1,6 @@
 import re
 import requests
+from app import db
 import command_system
 
 
@@ -18,14 +19,12 @@ def get_group_schedule(request):
 
     group, day = re.findall(r'\d+', request['message']['text'])
 
-    groups = requests.get('https://journal.bsuir.by/api/v1/groups').json()
-    flag = any([group == i['name'] for i in groups])
-
-    if not flag:
+    if not db['groups'].count_documents({'name': group}):
         return 'Invalid group number'
 
     cur_day = days[day]
-    cur_week = requests.get('http://journal.bsuir.by/api/v1/week').json()
+    # cur_week = requests.get('http://journal.bsuir.by/api/v1/week').json()
+    cur_week = 2
 
     url = 'https://journal.bsuir.by/api/v1/studentGroup/schedule?studentGroup={}'.format(group)
     r = requests.get(url).json()
