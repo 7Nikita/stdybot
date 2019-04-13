@@ -19,7 +19,7 @@ def get_group_schedule(request):
 
     group, day = re.findall(r'\d+', request['message']['text'])
 
-    if not app.gdb['groups'].count_documents({'name': group}):
+    if not app.db['groups'].count_documents({'name': group}):
         return 'Invalid group number'
 
     cur_day = days[day]
