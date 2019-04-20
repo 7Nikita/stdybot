@@ -30,7 +30,12 @@ def update_schedules():
 
     for group in app.db['groups'].find({}):
         group_number = group['name']
-        group_last_update = requests.get(update_request + group_number).json()
+
+        try:
+            group_last_update = requests.get(update_request + group_number).json()['lastUpdateDate']
+        except:
+            continue
+
         if not (app.db['schedules'].count_documents({'name': group_number})
                 and app.db['schedules'].find_one({'name': group_number})['last_update'] == group_last_update):
             try:
