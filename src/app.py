@@ -1,4 +1,5 @@
 import re
+import worker
 import pymongo
 import utility
 import requests
@@ -7,6 +8,7 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from flask import render_template
+from multiprocessing import Process
 from command_system import command_list
 
 
@@ -15,6 +17,10 @@ utility.load_modules()
 
 client = pymongo.MongoClient('mongodb://localhost:27017/')
 db = client['stdybot']
+
+
+update_process = Process(target=worker.update_information)
+update_process.start()
 
 
 STDY_TOKEN = getenv('STDY_TOKEN')
