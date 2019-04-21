@@ -11,7 +11,7 @@ def tomorrow_schedule(request):
     if not app.db['groups'].count_documents({'name': group}):
         return 'Invalid group number'
 
-    cur_day = app.db['info'].find_one({'name': 'current_day'})['day'] + 1 % 7
+    cur_day = (app.db['info'].find_one({'name': 'current_day'})['day'] + 1) % 7
     cur_week = app.db['info'].find_one({'name': 'current_week'})['week']
 
     return schedule_tools.get_schedule(group, cur_day, cur_week)
