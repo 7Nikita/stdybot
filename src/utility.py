@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import importlib
 
@@ -18,5 +19,13 @@ def load_modules():
 def load_module(module_name):
     try:
         importlib.import_module('commands.{}'.format(module_name))
+        return 'successfully loaded'
     except ModuleNotFoundError:
-        pass
+        return 'failed'
+
+
+def unload_module(module_name):
+    if module_name in sys.modules:
+        del sys.modules[module_name]
+        return 'successfully unloaded'
+    return 'failed'
