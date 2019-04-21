@@ -24,8 +24,9 @@ def load_module(module_name):
         return 'failed'
 
 
-def unload_module(module_name):
-    if module_name in sys.modules:
-        del sys.modules[module_name]
-        return 'successfully unloaded'
-    return 'failed'
+def reload_module(module_name):
+    try:
+        importlib.reload('commands.{}'.format(module_name))
+        return 'successfully reloaded'
+    except ModuleNotFoundError:
+        return 'failed'
