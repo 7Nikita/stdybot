@@ -7,7 +7,7 @@ import command_system
 def load_module(request):
     user_id = request['message']['from']['id']
 
-    module_name = re.findall(r'\w+', request['message']['text'])[-1][6:]
+    module_name = re.findall(r'\w+', request['message']['text'][6:])[-1]
 
     if user_id == app.db['info'].find_one({'name': 'admin'})['user_id']:
         return utility.load_module(module_name)
