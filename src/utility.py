@@ -26,7 +26,7 @@ def load_module(module_name):
 
 def reload_module(module_name):
     try:
-        importlib.reload(sys['commands.{}'.format(module_name)])
+        importlib.reload(sys.modules['commands.{}'.format(module_name)])
         return 'successfully reloaded'
     except ModuleNotFoundError:
         return 'failed'
