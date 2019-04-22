@@ -7,7 +7,7 @@ import command_system
 def reload_module(request):
     user_id = request['message']['from']['id']
 
-    module_name = re.findall(r'\w+', request['message']['text'])[-1][8:]
+    module_name = re.findall(r'\w+', request['message']['text'][8:])[-1]
 
     if user_id == app.db['info'].find_one({'name': 'admin'})['user_id']:
         return utility.reload_module(module_name)
