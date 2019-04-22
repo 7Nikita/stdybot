@@ -12,7 +12,7 @@ def tomorrow_schedule(request):
         return 'Invalid group number'
 
     cur_day = (app.db['info'].find_one({'name': 'current_day'})['day'] + 1) % 7
-    cur_week = (app.db['info'].find_one({'name': 'current_week'})['week'] + cur_day == 0) % 4 + 1
+    cur_week = (app.db['info'].find_one({'name': 'current_week'})['week'] + (cur_day == 0)) % 4 + (cur_day == 0)
 
     return schedule_tools.get_schedule(group, cur_day, cur_week)
 
