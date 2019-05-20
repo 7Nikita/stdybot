@@ -18,5 +18,5 @@ def load_module(request):
 load_module_command = command_system.Command()
 
 load_module_command.keys = [r'/load \w+\t*']
-load_module_command.description = 'load module'
+load_module_command.description = '/load - load module'
 load_module_command.process = load_module

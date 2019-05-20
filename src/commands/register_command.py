@@ -19,5 +19,5 @@ def register(request):
 register_command = command_system.Command()
 
 register_command.keys = [r'/reg \d+\t*']
-register_command.description = 'register your university group'
+register_command.description = '/reg group - register your university group'
 register_command.process = register

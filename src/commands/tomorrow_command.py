@@ -20,5 +20,5 @@ def tomorrow_schedule(request):
 tomorrow_schedule_command = command_system.Command()
 
 tomorrow_schedule_command.keys = [r'/tomorrow \d+\t*']
-tomorrow_schedule_command.description = 'getting tomorrow schedule by group'
+tomorrow_schedule_command.description = '/tomorrow group - getting tomorrow schedule by group'
 tomorrow_schedule_command.process = tomorrow_schedule

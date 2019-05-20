@@ -9,5 +9,5 @@ def get_week(request):
 get_week_command = command_system.Command()
 
 get_week_command.keys = [r'/week']
-get_week_command.description = 'get week'
+get_week_command.description = '/week - get current week'
 get_week_command.process = get_week

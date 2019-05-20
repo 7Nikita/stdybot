@@ -17,5 +17,5 @@ def rtomorrow_schedule(request):
 rtomorrow_schedule_command = command_system.Command()
 
 rtomorrow_schedule_command.keys = [r'/tomorrow\t*']
-rtomorrow_schedule_command.description = 'getting tomorrow schedule by your group'
+rtomorrow_schedule_command.description = '/tomorrow - getting tomorrow schedule by your group'
 rtomorrow_schedule_command.process = rtomorrow_schedule

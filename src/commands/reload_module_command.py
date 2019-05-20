@@ -18,5 +18,5 @@ def reload_module(request):
 reload_module_command = command_system.Command()
 
 reload_module_command.keys = [r'/reload \w+\t*']
-reload_module_command.description = 'unload module'
+reload_module_command.description = '/reload - reload module'
 reload_module_command.process = reload_module

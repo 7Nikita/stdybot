@@ -9,5 +9,5 @@ def get_ping(request):
 ping_command = command_system.Command()
 
 ping_command.keys = [r'/ping']
-ping_command.description = 'get ping'
+ping_command.description = '/ping - get ping'
 ping_command.process = get_ping

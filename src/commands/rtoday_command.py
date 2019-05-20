@@ -17,5 +17,5 @@ def rtoday_schedule(request):
 rtoday_schedule_command = command_system.Command()
 
 rtoday_schedule_command.keys = [r'/today\t*']
-rtoday_schedule_command.description = 'getting today schedule by your group'
+rtoday_schedule_command.description = '/today - getting today schedule by your group'
 rtoday_schedule_command.process = rtoday_schedule
