@@ -4,7 +4,7 @@ import command_system
 def help(request):
     ans = ""
     for command in command_system.command_list:
-        ans += "{}\n".format(command.keys[-1], command.description)
+        ans += "{}\n".format(command.description)
     return ans
 
 
